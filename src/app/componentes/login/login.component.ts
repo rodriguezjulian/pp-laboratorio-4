@@ -5,11 +5,11 @@ import { Router, RouterLink } from '@angular/router';
 import { addDoc, collection, Firestore, query, orderBy, collectionData } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { Auth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword} from '@angular/fire/auth';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../servicios/auth.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -28,7 +28,7 @@ export class LoginComponent {
   
   Login() {
     signInWithEmailAndPassword(this.auth, this.email, this.userPWD).then((res) => {
-      if (res.user.email !== null) this.auths.userActive = res.user;
+      
       this.GuardarRegistroExitoso();
       this.Home();
     }).catch((e) => {
@@ -51,21 +51,15 @@ export class LoginComponent {
   }
 
   Home() {
-    this.router.navigate(['/home'], { queryParams: { user: this.email } });
+    this.router.navigate(['/home']);
   }
   
-  Register() {
-    this.router.navigate(['/register']);
-  }
-  QuienSoy() {
-    this.router.navigate(['/quiensoy']);
-  }
   AutoCompletado(){
     this.email = "julian.rodriguez@gmail.com";
     this.userPWD = "12345678";
   }
   Auto(){
-    this.email = "pruebita@string.com";
+    this.email = "empleado@string.com";
     this.userPWD = "12345678";
   }
 }

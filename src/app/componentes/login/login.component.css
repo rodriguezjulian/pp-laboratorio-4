@@ -1,13 +1,55 @@
-::ng-deep body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    }
+
+
 .gradient-custom {
-    background: #6a11cb;
-    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
-    }
+    background: #00c9a7;
+    background: -webkit-linear-gradient(to right, rgba(0, 201, 167, 1), rgba(0, 132, 255, 1));
+    background: linear-gradient(to right, rgba(0, 201, 167, 1), rgba(0, 132, 255, 1));
+}
+
+.custom-card {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 1rem;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.title-text {
+    font-size: 1.8rem;
+    color: #ffd700;
+}
+
+.subtitle-text {
+    color: #b0bec5;
+    font-size: 1rem;
+}
+
+.custom-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #4caf50;
+    color: white;
+    padding: 15px;
+    border-radius: 0.5rem;
+}
+
+.custom-input::placeholder {
+    color: #b0bec5;
+}
+
+.custom-btn {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    opacity: 0.9;
+}
+
+.card-body h2 {
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}

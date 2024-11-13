@@ -1,0 +1,30 @@
+.gradient-custom {
+  background: -webkit-linear-gradient(to right, yellow, grey);
+  background: linear-gradient(to right, yellow, grey);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 960px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-control.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+.text-danger {
+  font-size: 0.9rem;
+}
+
+.mt-3 img {
+  border: 1px solid #ddd;
+  padding: 2px;
+  border-radius: 4px;
+}
