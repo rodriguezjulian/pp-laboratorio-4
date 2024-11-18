@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { loginGuard } from './guards/login.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { TablaAnimalesComponent } from './componentes/animales/tabla-animales/tabla-animales.component';
 export const routes: Routes = [
     {
         path: '',
@@ -27,7 +28,7 @@ export const routes: Routes = [
     },
     {
         path: 'animales',
-        loadComponent: () => import('./componentes/animales/animales.component').then(m => m.AnimalesComponent),
+        loadComponent: () => import('./componentes/animales/tabla-animales/tabla-animales.component').then(m => m.TablaAnimalesComponent),
         canActivate: [loginGuard, AdminGuard],
     },    
 ];

@@ -1,0 +1,51 @@
+<div class="container my-4">
+    <h2 class="text-center">Lista de Animales</h2>
+  
+    <!-- Tabla de Animales -->
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Cantidad de Patas</th>
+            <th>Peso Promedio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let animal of animales">
+            <td>{{ animal.nombre }}</td>
+            <td>{{ animal.tipo }}</td>
+            <td>{{ animal.patas }}</td>
+            <td>{{ animal.peso }} kg</td>
+            <td>
+              <button class="btn btn-warning btn-sm" (click)="seleccionarAnimalParaModificar(animal)">
+                Modificar
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="seleccionarAnimalParaEliminar(animal)">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <app-alta-animal (animalCreado)="agregarAnimal($event)"></app-alta-animal>
+  
+    <!-- Modificación de Animales -->
+    <app-modificar-animal
+      *ngIf="animalSeleccionado"
+      [animal]="animalSeleccionado"
+      (animalModificado)="actualizarAnimal($event)"
+    ></app-modificar-animal>
+  
+    <!-- Eliminación de Animales -->
+    <app-eliminar-animal
+      *ngIf="animalSeleccionadoParaEliminar"
+      [animal]="animalSeleccionadoParaEliminar"
+      (animalEliminado)="removerAnimal($event)"
+    ></app-eliminar-animal>
+  </div>
+  

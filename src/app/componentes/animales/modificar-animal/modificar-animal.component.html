@@ -1,0 +1,43 @@
+<div class="card p-3">
+    <h5 class="text-center">Modificar Animal</h5>
+    <form [formGroup]="form" (ngSubmit)="modificarAnimal()">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          id="nombre"
+          class="form-control"
+          [value]="animal?.nombre"
+          readonly
+        />
+        <small class="text-muted">El nombre no puede ser modificado.</small>
+      </div>
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo</label>
+        <select id="tipo" class="form-select" formControlName="tipo">
+          <option value="" disabled selected>Seleccione</option>
+          <option value="Mamífero">Mamífero</option>
+          <option value="Ave">Ave</option>
+          <option value="Reptil">Reptil</option>
+        </select>
+        <div *ngIf="form.get('tipo')?.invalid && form.get('tipo')?.touched" class="text-danger">
+          El tipo es obligatorio.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="patas" class="form-label">Cantidad de Patas</label>
+        <input id="patas" type="number" class="form-control" formControlName="patas" />
+        <div *ngIf="form.get('patas')?.invalid && form.get('patas')?.touched" class="text-danger">
+          La cantidad de patas debe ser entre 0 y 4.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="peso" class="form-label">Peso Promedio (kg)</label>
+        <input id="peso" type="number" class="form-control" formControlName="peso" />
+        <div *ngIf="form.get('peso')?.invalid && form.get('peso')?.touched" class="text-danger">
+          El peso debe ser entre 5 y 50 kg.
+        </div>
+      </div>
+      <button class="btn btn-primary w-100" [disabled]="form.invalid">Modificar</button>
+    </form>
+  </div>
+  

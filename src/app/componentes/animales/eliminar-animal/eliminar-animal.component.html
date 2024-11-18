@@ -1,0 +1,41 @@
+<div class="card p-3">
+    <h5 class="text-center text-danger">Eliminar Animal</h5>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        id="nombre"
+        class="form-control"
+        [value]="animal?.nombre"
+        readonly
+      />
+    </div>
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo</label>
+      <input
+        id="tipo"
+        class="form-control"
+        [value]="animal?.tipo"
+        readonly
+      />
+    </div>
+    <div class="mb-3">
+      <label for="patas" class="form-label">Cantidad de Patas</label>
+      <input
+        id="patas"
+        class="form-control"
+        [value]="animal?.patas"
+        readonly
+      />
+    </div>
+    <div class="mb-3">
+      <label for="peso" class="form-label">Peso Promedio</label>
+      <input
+        id="peso"
+        class="form-control"
+        [value]="animal?.peso"
+        readonly
+      />
+    </div>
+    <button class="btn btn-danger w-100" (click)="eliminarAnimal()">Eliminar</button>
+  </div>
+  

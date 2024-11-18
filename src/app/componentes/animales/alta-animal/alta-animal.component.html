@@ -1,0 +1,28 @@
+<div class="card p-3">
+    <h5 class="text-center">Alta Animal</h5>
+    <form [formGroup]="form" (ngSubmit)="crearAnimal()">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input id="nombre" class="form-control" formControlName="nombre" />
+      </div>
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo</label>
+        <select id="tipo" class="form-select" formControlName="tipo">
+          <option value="">Seleccione</option>
+          <option value="Mamífero">Mamífero</option>
+          <option value="Ave">Ave</option>
+          <option value="Reptil">Reptil</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="patas" class="form-label">Cantidad de Patas</label>
+        <input id="patas" type="number" class="form-control" formControlName="patas" />
+      </div>
+      <div class="mb-3">
+        <label for="peso" class="form-label">Peso Promedio (kg)</label>
+        <input id="peso" type="number" class="form-control" formControlName="peso" />
+      </div>
+      <button class="btn btn-primary w-100" [disabled]="form.invalid">Crear</button>
+    </form>
+  </div>
+  

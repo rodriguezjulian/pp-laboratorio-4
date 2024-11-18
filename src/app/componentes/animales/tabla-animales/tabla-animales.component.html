@@ -1,0 +1,80 @@
+<div class="container my-4">
+  <!-- Título principal -->
+  <h2 class="text-center mb-4">Gestión de Animales</h2>
+
+  <!-- Fila de la tabla de animales -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Cantidad de Patas</th>
+              <th>Peso Promedio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let animal of animales">
+              <td>{{ animal.nombre }}</td>
+              <td>{{ animal.tipo }}</td>
+              <td>{{ animal.patas }}</td>
+              <td>{{ animal.peso }} kg</td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  (click)="seleccionarAnimalParaModificar(animal)"
+                >
+                  Modificar
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="seleccionarAnimalParaEliminar(animal)"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila para formularios -->
+  <div class="row">
+    <!-- Columna de Alta Animal -->
+    <div class="col-md-4">
+      <div class="card p-3 bg-secondary text-white">
+        <h5 class="text-center">Alta Animal</h5>
+        <app-alta-animal (animalCreado)="agregarAnimal($event)"></app-alta-animal>
+      </div>
+    </div>
+
+    <!-- Columna de Modificar Animal -->
+    <div class="col-md-4">
+      <div class="card p-3 bg-light">
+        <h5 class="text-center text-primary">Modificar Animal</h5>
+        <app-modificar-animal
+          *ngIf="animalSeleccionado"
+          [animal]="animalSeleccionado"
+          (animalModificado)="actualizarAnimal($event)"
+        ></app-modificar-animal>
+      </div>
+    </div>
+
+    <!-- Columna de Eliminar Animal -->
+    <div class="col-md-4">
+      <div class="card p-3 bg-dark text-white">
+        <h5 class="text-center text-danger">Eliminar Animal</h5>
+        <app-eliminar-animal
+          *ngIf="animalSeleccionadoParaEliminar"
+          [animal]="animalSeleccionadoParaEliminar"
+          (animalEliminado)="removerAnimal($event)"
+        ></app-eliminar-animal>
+      </div>
+    </div>
+  </div>
+</div>
