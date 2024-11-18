@@ -22,13 +22,13 @@ export class LoginComponent {
   private sub: Subscription | undefined;
   public msjError : string = "";
 
-  constructor(private router: Router, private firestore: Firestore, private auth : Auth, private auths :AuthService) {
+  constructor(private router: Router, private firestore: Firestore, private auth : Auth, private auths : AuthService) {
 
   }
   
   Login() {
     signInWithEmailAndPassword(this.auth, this.email, this.userPWD).then((res) => {
-      
+      //this.auths.login(this.email, this.userPWD); 
       this.GuardarRegistroExitoso();
       this.Home();
     }).catch((e) => {

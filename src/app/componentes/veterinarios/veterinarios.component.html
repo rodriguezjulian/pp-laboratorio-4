@@ -1,0 +1,27 @@
+<div class="container-fluid mt-4">
+    <div class="row">
+      <!-- Tabla de Veterinarios -->
+      <div class="col-md-6">
+        <app-tabla-veterinarios
+          (veterinarioSeleccionado)="mostrarDetallesVeterinario($event)"
+        ></app-tabla-veterinarios>
+      </div>
+  
+      <!-- Detalles del Veterinario y Detalles del País -->
+      <div class="col-md-6">
+        <div class="row">
+          <!-- Detalles del Veterinario -->
+          <div class="col-md-12 mb-4">
+            <app-detalle-veterinario
+              [veterinario]="veterinarioSeleccionado"
+            ></app-detalle-veterinario>
+          </div>
+          <!-- Detalles del País -->
+          <div class="col-md-12">
+            <app-detalle-pais [pais]="paisSeleccionado"></app-detalle-pais>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,13 +8,13 @@ import { CountryService } from '../../servicios/country.service'
 import { DetallePaisComponent } from '../../componentes/detalle-pais/detalle-pais.component'
 import { CommonModule } from '@angular/common';
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule,TablaVeterinariosComponent,DetalleVeterinarioComponent,DetallePaisComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+    selector: 'app-veterinarios',
+    standalone: true,
+    templateUrl: './veterinarios.component.html',
+    styleUrl: './veterinarios.component.css',
+    imports: [CommonModule,TablaVeterinariosComponent,DetalleVeterinarioComponent,DetallePaisComponent],
 })
-export class HomeComponent {
+export class VeterinariosComponent {
   veterinarioSeleccionado: any;
   paisSeleccionado: any;
   usuarioLogueado: any | null = null; // Guarda información del usuario logueado
