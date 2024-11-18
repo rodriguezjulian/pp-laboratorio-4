@@ -28,7 +28,8 @@ export class LoginComponent {
   
   Login() {
     signInWithEmailAndPassword(this.auth, this.email, this.userPWD).then((res) => {
-      //this.auths.login(this.email, this.userPWD); 
+      
+      
       this.GuardarRegistroExitoso();
       this.Home();
     }).catch((e) => {
