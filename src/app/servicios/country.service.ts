@@ -13,7 +13,12 @@ export class CountryService {
 
   obtenerPaises(continentes: string[]): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl).pipe(
-      map(countries => countries.filter(country => continentes.includes(country.region)))
+      map((countries) => {
+        console.log('Datos obtenidos de la API:', countries);
+        return continentes.length > 0
+          ? countries.filter((country) => continentes.includes(country.region))
+          : countries;
+      })
     );
   }
 }

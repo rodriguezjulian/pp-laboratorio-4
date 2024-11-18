@@ -1,19 +1,59 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Veterinaria</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="altavete()" routerLink="/alta-veterinario" routerLinkActive="active">Alta Veterinario</a>
-          </li>
-        </ul>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Veterinaria</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            (click)="altavete()"
+            routerLink="/alta-veterinario"
+            routerLinkActive="active"
+            >Alta Veterinario</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <!-- Tabla de Veterinarios -->
+    <div class="col-md-6">
+      <app-tabla-veterinarios
+        (veterinarioSeleccionado)="mostrarDetallesVeterinario($event)"
+      ></app-tabla-veterinarios>
+    </div>
+
+    <!-- Detalles del Veterinario y Detalles del País -->
+    <div class="col-md-6">
+      <div class="row">
+        <!-- Detalles del Veterinario -->
+        <div class="col-md-12 mb-4">
+          <app-detalle-veterinario
+            [veterinario]="veterinarioSeleccionado"
+          ></app-detalle-veterinario>
+        </div>
+        <!-- Detalles del País -->
+        <div class="col-md-12">
+          <app-detalle-pais [pais]="paisSeleccionado"></app-detalle-pais>
+        </div>
       </div>
     </div>
-  </nav>
-  
+  </div>
+</div>
