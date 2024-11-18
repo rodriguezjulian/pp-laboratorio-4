@@ -1,11 +1,18 @@
 <div class="contenedor-detalle-pais">
-  <h2>Detalles del País</h2>
-  <p><strong>Nombre:</strong> {{ pais?.name?.common }}</p>
-  <p><strong>Región:</strong> {{ pais?.region }}</p>
-  <p><strong>Población:</strong> {{ pais?.population | number }}</p>
-  <img
-    [src]="pais?.flags?.svg"
-    alt="Bandera de {{ pais?.name?.common }}"
-    width="120"
-  />
+  <div class="contenedor-detalle-veterinario">
+    <div *ngIf="!pais" class="alert alert-warning text-center" role="alert">
+      Aún no hay información para mostrar.
+    </div>
+  <div *ngIf="pais" >
+    <h2>Detalles del País</h2>
+    <p><strong>Nombre:</strong> {{ pais?.name?.common }}</p>
+    <p><strong>Región:</strong> {{ pais?.region }}</p>
+    <p><strong>Población:</strong> {{ pais?.population | number }}</p>
+    <img
+      [src]="pais?.flags?.svg"
+      alt="Bandera de {{ pais?.name?.common }}"
+      width="120"
+    />
+  </div>
 </div>
+
