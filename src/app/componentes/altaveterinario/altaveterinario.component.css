@@ -1,5 +1,7 @@
 .container-fluid {
-  background-color: #b0b0b0; /* Fondo general */
+  background: #00c9a7;
+  background: -webkit-linear-gradient(to right, rgba(0, 201, 167, 1), rgba(0, 132, 255, 1));
+  background: linear-gradient(to right, rgba(0, 201, 167, 1), rgba(0, 132, 255, 1));
   padding: 20px;
   border-radius: 8px;
 }

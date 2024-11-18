@@ -17,4 +17,9 @@
     border-radius: 50%; 
     margin-top: 20px;
   }
-  
+  .fondo
+  {
+    background: #00c9a7;
+    background: -webkit-linear-gradient(to right, rgba(0, 201, 167, 1), rgba(0, 132, 255, 1));
+    background: linear-gradient(to right, rgba(0, 201, 167, 1), rgba(0, 132, 255, 1));
+  }
