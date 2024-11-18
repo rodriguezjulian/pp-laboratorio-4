@@ -1,0 +1,15 @@
+<div class="container">
+    <h3>Lista de Países</h3>
+    <ul class="list-group">
+      <li 
+        *ngFor="let pais of paises" 
+        class="list-group-item d-flex justify-content-between align-items-center"
+        (click)="seleccionarPais(pais)"
+        style="cursor: pointer;"
+      >
+        <span>{{ pais.name.common }}</span>
+        <img [src]="pais.flags.svg" alt="{{ pais.name.common }} Flag" width="40" height="25" />
+      </li>
+    </ul>
+  </div>
+  
