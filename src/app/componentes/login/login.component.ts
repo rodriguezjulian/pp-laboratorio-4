@@ -1,66 +1,83 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
-import { addDoc, collection, Firestore, query, orderBy, collectionData } from '@angular/fire/firestore';
-import { Observable, Subscription } from 'rxjs';
-import { Auth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword} from '@angular/fire/auth';
-import { AuthService } from '../../servicios/auth.service';
+import { Router } from '@angular/router';
+import { collection, addDoc, Firestore } from '@angular/fire/firestore';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { FirestoreService } from '../../servicios/firestore.service';
+
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  public email: string = "";
-  public userPWD: string = "";
-  public userActive: string = ""; 
-  public loginsCollection: any[] = [];
-  public countLogins: number = 0;
-  private sub: Subscription | undefined;
-  public msjError : string = "";
+  public email: string = '';
+  public userPWD: string = '';
+  public msjError: string = '';
 
-  constructor(private router: Router, private firestore: Firestore, private auth : Auth, private auths : AuthService) {
+  constructor(private firestoreService: FirestoreService,    private router: Router,    private firestore: Firestore,    private auth: Auth) {}
+   
+  async Login() {
+    try {
+      const res = await signInWithEmailAndPassword(this.auth, this.email, this.userPWD);
 
-  }
-  
-  Login() {
-    signInWithEmailAndPassword(this.auth, this.email, this.userPWD).then((res) => {
-      
-      
-      this.GuardarRegistroExitoso();
-      this.Home();
-    }).catch((e) => {
-      switch(e.code) {
-        case "auth/invalid-credential":
-          this.msjError = "Email o contraseña incorrectos";
-          break;
-          case "auth/invalid-email":
-            this.msjError = "EMAIL INCORRECTO.";
-            break;
-        default:
-          this.msjError = "ERROR al ingresar sesion, verifique datos ingresados.";
-          break;
+      console.log('Usuario autenticado:', res.user);
+
+      await this.GuardarRegistroExitoso();
+
+      const userDoc = await this.firestoreService.getDocument<any>(
+        `usuarios/${res.user.uid}`
+      );
+      const userData = userDoc.data();
+
+      console.log('Datos del usuario:', userData);
+      if (userData?.aceptoTerminos) {
+        this.Home();
+      } else {
+        this.Terminos();
       }
-    });}
+    } catch (error: any) {
+      console.error('Error en el inicio de sesión:', error);
+      switch (error.code) {
+        case 'auth/user-not-found':
+          this.msjError = 'Usuario no encontrado.';
+          break;
+        case 'auth/wrong-password':
+          this.msjError = 'Contraseña incorrecta.';
+          break;
+        default:
+          this.msjError = 'Error al iniciar sesión. Verifique sus datos.';
+      }
+    }
+  }
 
-  GuardarRegistroExitoso(){
-    let col = collection(this.firestore, 'logins');
-    addDoc(col, { fecha: new Date(), user: this.email });
+  async GuardarRegistroExitoso() {
+    try {
+      const col = collection(this.firestore, 'logins');
+      await addDoc(col, { fecha: new Date(), user: this.email });
+    } catch (error) {
+      console.error('Error al guardar el registro de inicio de sesión:', error);
+    }
   }
 
   Home() {
     this.router.navigate(['/home']);
   }
-  
-  AutoCompletado(){
-    this.email = "julian.rodriguez@gmail.com";
-    this.userPWD = "12345678";
+
+  Terminos() {
+    this.router.navigate(['/terminos']);
   }
-  Auto(){
-    this.email = "empleado@string.com";
-    this.userPWD = "12345678";
+
+  AutoCompletado() {
+    this.email = 'julian.rodriguez@gmail.com';
+    this.userPWD = '12345678';
+  }
+
+  Auto() {
+    this.email = 'empleado@string.com';
+    this.userPWD = '12345678';
   }
 }

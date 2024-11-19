@@ -4,10 +4,21 @@
     background: linear-gradient(to right, rgba(0, 201, 167, 1), rgba(0, 132, 255, 1));
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
-  .container-fluid {
-    flex-grow: 1; /* Hace que el contenido crezca ocupando el espacio disponible */
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  form {
+    margin-top: 1rem;
   }
   

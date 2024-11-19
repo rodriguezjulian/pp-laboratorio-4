@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { loginGuard } from './guards/login.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { TablaAnimalesComponent } from './componentes/animales/tabla-animales/tabla-animales.component';
+import {terminosGuard} from '../app/guards/terminos.guard'
 export const routes: Routes = [
     {
         path: '',
@@ -31,4 +32,13 @@ export const routes: Routes = [
         loadComponent: () => import('./componentes/animales/tabla-animales/tabla-animales.component').then(m => m.TablaAnimalesComponent),
         canActivate: [loginGuard, AdminGuard],
     },    
+    {
+        path: 'registro',
+        loadComponent: () => import('../app/componentes/usuarios-nuevos/registro/registro.component').then(m => m.RegistroComponent),
+    },        
+    {
+        path: 'terminos',
+        loadComponent: () => import('../app/componentes/usuarios-nuevos/terminos/terminos.component').then(m => m.TerminosComponent),
+        canDeactivate: [terminosGuard],
+    }   
 ];

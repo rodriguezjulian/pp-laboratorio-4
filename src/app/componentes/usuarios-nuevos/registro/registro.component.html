@@ -1,0 +1,48 @@
+<div class="fondo">
+    <div class="container mt-5">
+      <div class="card mx-auto" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title text-center">Registro de Usuario</h5>
+          <form (ngSubmit)="registrarUsuario()" #registroForm="ngForm">
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                [(ngModel)]="email"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                [(ngModel)]="password"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                [(ngModel)]="confirmPassword"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!registroForm.valid">
+              Registrarse
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
