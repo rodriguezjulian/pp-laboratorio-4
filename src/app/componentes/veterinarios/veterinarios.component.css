@@ -1,6 +1,13 @@
-.fondo
-{  
+.fondo {
     background: #00c9a7;
     background: -webkit-linear-gradient(to right, rgba(0, 201, 167, 1), rgba(0, 132, 255, 1));
     background: linear-gradient(to right, rgba(0, 201, 167, 1), rgba(0, 132, 255, 1));
-}
+    height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+    display: flex; /* Flexbox para el contenido */
+    flex-direction: column;
+  }
+  
+  .container-fluid {
+    flex-grow: 1; /* Hace que el contenido crezca ocupando el espacio disponible */
+  }
+  
